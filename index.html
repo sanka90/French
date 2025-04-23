@@ -21,6 +21,7 @@
         }
         h1, h2 {
             color: #007bff;
+            font-size: 1.8em;
         }
         .highlight {
             background-color: #fff3cd;
@@ -44,6 +45,7 @@
             color: white;
             border-radius: 6px;
             cursor: pointer;
+            width: 100%;
         }
         button:hover {
             background: #0056b3;
@@ -68,13 +70,14 @@
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             text-align: center;
-            width: 300px;
+            width: 80%;
+            max-width: 350px;
         }
         .login-container h2 {
             margin-bottom: 20px;
             color: #007bff;
         }
-        input[type="text"], input[type="password"] {
+        input[type="text"], input[type="password"], input[type="text"] {
             width: 100%;
             padding: 10px;
             margin: 10px 0 20px;
@@ -85,15 +88,48 @@
             color: red;
             margin-top: 12px;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1, h2 {
+                font-size: 1.4em;
+            }
+            .container {
+                padding: 15px;
+            }
+            button {
+                width: 100%;
+            }
+            .login-container {
+                padding: 20px;
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            .login-container {
+                width: 90%;
+                padding: 15px;
+            }
+            h1, h2 {
+                font-size: 1.2em;
+            }
+            button {
+                padding: 10px 14px;
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="login-overlay" id="loginOverlay">
     <div class="login-container">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="validateLogin()">Enter</button>
+        <h2>Enter Passkey</h2>
+        <input type="text" id="passkey" placeholder="Enter passkey">
+        <button onclick="validatePasskey()">Enter</button>
         <p class="error" id="errorMsg"></p>
     </div>
 </div>
@@ -152,14 +188,13 @@
 </div>
 
 <script>
-function validateLogin() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    if (username === 'french' && password === 'class') {
+function validatePasskey() {
+    const passkey = document.getElementById('passkey').value;
+    if (passkey === 'french123') {
         document.getElementById('loginOverlay').style.display = 'none';
         document.getElementById('content').style.display = 'block';
     } else {
-        document.getElementById('errorMsg').innerText = 'Invalid username or password';
+        document.getElementById('errorMsg').innerText = 'Invalid passkey';
     }
 }
 

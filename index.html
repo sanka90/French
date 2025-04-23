@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Grammar Notes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        h1, h2 {
+            color: #007bff;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 5px solid #ffa500;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .quiz-container {
+            padding: 10px;
+            background: #e3f2fd;
+            border-left: 5px solid #007bff;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 14px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .login-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .login-container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 300px;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .error {
+            color: red;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="login-overlay" id="loginOverlay">
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="validateLogin()">Enter</button>
+        <p class="error" id="errorMsg"></p>
+    </div>
+</div>
+
+<div class="container" id="content" style="display:none">
+    <h1>French Grammar & Conjugation - Unit 1</h1>
+
+    <h2>1. Greetings & Polite Expressions</h2>
+    <div class="highlight">
+        <p><strong>Common French greetings:</strong></p>
+        <ul>
+            <li><em>Bonjour</em> (Good morning / Hello)</li>
+            <li><em>Salut</em> (Hi - informal)</li>
+            <li><em>Bonne journée</em> (Have a good day)</li>
+            <li><em>Comment allez-vous?</em> (How are you? - formal)</li>
+            <li><em>Enchanté(e)</em> (Nice to meet you)</li>
+        </ul>
+    </div>
+
+    <h2>2. Introducing Yourself</h2>
+    <div class="highlight">
+        <p><strong>Example:</strong></p>
+        <p>"Bonjour, je m'appelle Sophie. Je suis ingénieur chez ABC Entreprise."<br>
+        (Hello, my name is Sophie. I am an engineer at ABC Company.)</p>
+    </div>
+
+    <h3>Conjugation of "S'APPELER"</h3>
+    <ul>
+        <li>Je <strong>m'appelle</strong></li>
+        <li>Tu <strong>t'appelles</strong></li>
+        <li>Il/Elle <strong>s'appelle</strong></li>
+        <li>Nous <strong>nous appelons</strong></li>
+        <li>Vous <strong>vous appelez</strong></li>
+        <li>Ils/Elles <strong>s'appellent</strong></li>
+    </ul>
+
+    <h2>3. Basic Questions & Answers</h2>
+    <div class="highlight">
+        <p><strong>Common questions:</strong></p>
+        <ul>
+            <li><em>Quel est votre nom?</em></li>
+            <li><em>Quelle est votre nationalité?</em></li>
+            <li><em>Tu fais quoi dans la vie?</em></li>
+            <li><em>Où travailles-tu?</em></li>
+        </ul>
+    </div>
+
+    <h2>4. Interactive Quiz</h2>
+    <div class="quiz-container">
+        <p><strong>Question:</strong> How do you say "Good morning" in French?</p>
+        <button onclick="checkAnswer('Bonjour')">Bonjour</button>
+        <button onclick="checkAnswer('Salut')">Salut</button>
+        <button onclick="checkAnswer('Bonne nuit')">Bonne nuit</button>
+        <p class="result" id="quizResult"></p>
+    </div>
+</div>
+
+<script>
+function validateLogin() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    if (username === 'Sanka' && password === 'Fernando') {
+        document.getElementById('loginOverlay').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+    } else {
+        document.getElementById('errorMsg').innerText = 'Invalid username or password';
+    }
+}
+
+function checkAnswer(selectedAnswer) {
+    const correctAnswer = 'Bonjour';
+    const resultElement = document.getElementById('quizResult');
+    if (selectedAnswer === correctAnswer) {
+        resultElement.innerHTML = "✅ Correct! 'Bonjour' means 'Good morning'!";
+        resultElement.style.color = 'green';
+    } else {
+        resultElement.innerHTML = '❌ Incorrect! Try again.';
+        resultElement.style.color = 'red';
+    }
+}
+</script>
+
+</body>
+</html>
